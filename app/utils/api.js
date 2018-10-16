@@ -1,8 +1,4 @@
-import axios from 'axios';
-
-const token ='10e8f3e56145b08326ba3ed10379b10a96f08f77';
-const params=`access_token=${token}`;
-
+const params = '';
 const getStarCount = (repos) => repos.reduce((count, {stargazers_count}) => {
     return count + stargazers_count;
 }, 0);
@@ -16,13 +12,13 @@ const handleError = (error) => {
 }
 
 const getProfile = async (username) => {
-    const {data} = await axios.get(`https://api.github.com/users/${username}?${params}`);
-    return data;
+    const response = await fetch(`https://api.github.com/users/${username}?${params}`);
+    return response.json();
 };
 
 const getRepos = async (username) => {
-    const {data} = await axios.get(`https://api.github.com/users/${username}/repos?${params}&per_page=100`);
-    return data;
+    const response = await fetch(`https://api.github.com/users/${username}/repos?${params}&per_page=100`);
+    return response.json();
 }
 
 const calculateScore = (profile, repos) => {
@@ -56,7 +52,9 @@ const fetchPopularRepos = async (language) => {
         '&type=Repositories',
     ].join(''));
 
-    const {data: {items}} = await axios.get(encodedURI);
+    const response = await fetch(encodedURI);
+    const {items} = await response.json();
+
     return items;
 };
 
