@@ -20,7 +20,6 @@ module.exports = {
     "rules": {
         "indent": ["error", 4],
         "quotes": ["error", "single"],
-        "object-curly-spacing": ["error", "never"],
         "jsx-quotes": ["error", "prefer-single"],
         "comma-dangle": ["error", "only-multiline"],
     }
