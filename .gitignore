@@ -4,4 +4,4 @@
 /.firebaserc
 /.firebase
 /firebase.*
-
+/.vscode/*
